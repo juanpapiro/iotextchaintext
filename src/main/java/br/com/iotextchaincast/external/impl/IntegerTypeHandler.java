@@ -10,11 +10,11 @@ import java.util.Optional;
 public class IntegerTypeHandler extends TypeHandler {
 
     @Override
-    public Object check(Object obj, IOTextChainCast ioChainCast, Class<?> clazz) {
+    public Object check(String text, IOTextChainCast ioChainCast, Class<?> clazz) {
         if (checkType(clazz))
-            return Integer.valueOf((String) obj);
+            return Integer.valueOf(text);
 
-        return this.checkNext(obj, ioChainCast, clazz);
+        return this.checkNext(text, ioChainCast, clazz);
     }
 
     @Override

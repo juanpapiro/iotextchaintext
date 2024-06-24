@@ -9,11 +9,11 @@ import java.util.Optional;
 @Component
 public class StringTypeHandler extends TypeHandler {
     @Override
-    public Object check(Object obj, IOTextChainCast ioChainCast, Class<?> clazz) {
+    public Object check(String text, IOTextChainCast ioChainCast, Class<?> clazz) {
         if (checkType(clazz))
-            return String.valueOf(obj).trim();
+            return Optional.ofNullable(text).map(txt -> txt.trim()).orElse("");
 
-        return this.checkNext(obj, ioChainCast, clazz);
+        return this.checkNext(text, ioChainCast, clazz);
     }
 
     @Override

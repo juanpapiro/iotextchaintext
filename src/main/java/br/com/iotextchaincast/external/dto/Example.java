@@ -5,6 +5,9 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
+
 @Getter
 @Setter
 @ToString
@@ -26,22 +29,28 @@ public class Example {
     @IOTextChainCast(length = 5, order = 5)
     private String strValue;
 
+    @IOTextChainCast(length = 15, order = 6, align = "R", trelling = "0",
+            decimalPrecision = 2, decimalMovePoint = 2)
+    private BigDecimal bdValue;
 
-//    @IOChainCast(length = 20, order = 3, align = "R", trelling = "0",
-//            decimalPrecision = 2, decimalMovePoint = 2)
-//    private BigDecimal bdValue;
-//
-//    @IOChainCast(length = 14, order = 4, pattern = "ddMMyyyyHHmmss")
-//    private LocalDateTime date;
-//
-//    @IOChainCast(length = 20, order = 5, align = "R", trelling = "0",
-//            decimalPrecision = 2, decimalMovePoint = 2)
-//    private Double doubleValue;
-//
-//    @IOChainCast(length = 20, order = 6, align = "R", trelling = "0",
-//            decimalPrecision = 3, decimalMovePoint = 3)
-//    private float floatValue;
+    @IOTextChainCast(length = 14, order = 7, pattern = "ddMMyyyyHHmmss")
+    private LocalDateTime date;
 
+    @IOTextChainCast(length = 15, order = 8, align = "R", trelling = "0",
+            decimalPrecision = 2, decimalMovePoint = 2)
+    private Double doubleValue;
+
+    @IOTextChainCast(length = 15, order = 9, align = "R", trelling = "0",
+            decimalPrecision = 2, decimalMovePoint = 2)
+    private double doubleValuePrimitive;
+
+    @IOTextChainCast(length = 15, order = 10, align = "R", trelling = "0",
+            decimalPrecision = 3, decimalMovePoint = 3)
+    private Float floatValue;
+
+    @IOTextChainCast(length = 15, order = 11, align = "R", trelling = "0",
+            decimalPrecision = 3, decimalMovePoint = 3)
+    private float floatValuePrimitive;
 
 
 }

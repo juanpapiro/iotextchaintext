@@ -23,7 +23,7 @@ public class IochaincastApplication {
 	@Bean
 	public Object run() {
 		IOTextChainCastController ioChainCastController = new IOTextChainCastController(typeHandlerList);
-		Example example = (Example) ioChainCastController.toObject("0201203123TESTE", new Example());
+		Example example = (Example) ioChainCastController.toObject("0201203123TESTE00000123456781230122024155959000001234567800000001234567801000001234567123000001234567001", new Example());
 		System.out.println("Objeto formatado: " + example.toString());
 		String txtFormatter = ioChainCastController.toText(example);
 		System.out.println("Texto formatado: " + txtFormatter);

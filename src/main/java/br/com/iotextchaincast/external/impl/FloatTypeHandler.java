@@ -11,8 +11,10 @@ import java.util.Optional;
 public class FloatTypeHandler extends TypeHandler {
     @Override
     public Object check(String text, IOTextChainCast ioChainCast, Class<?> clazz) {
-        if (checkType(clazz))
-            return toBigDecimal(text, ioChainCast).floatValue();
+        if (checkType(clazz)) {
+            BigDecimal bd = toBigDecimal(text, ioChainCast);
+            return Float.valueOf(bd.toString());
+        }
 
         return this.checkNext(text, ioChainCast, clazz);
     }

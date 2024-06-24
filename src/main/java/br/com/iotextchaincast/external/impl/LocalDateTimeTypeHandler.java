@@ -12,21 +12,21 @@ import java.util.Optional;
 public class LocalDateTimeTypeHandler extends TypeHandler {
     @Override
     public Object check(String text, IOTextChainCast ioChainCast, Class<?> clazz) {
-        DateTimeFormatter formatter = patternDefine(ioChainCast);
-        if (checkType(clazz))
+        if (checkType(clazz)){
+            DateTimeFormatter formatter = patternDefine(ioChainCast);
             return Optional.ofNullable(text)
                     .filter(txt -> !txt.trim().isEmpty())
                     .map(txt -> LocalDateTime.parse(txt.trim(), formatter))
                     .orElse(null);
-
+        }
         return this.checkNext(text, ioChainCast, clazz);
     }
 
     @Override
     public String check(Object obj, IOTextChainCast ioChainCast) {
-        DateTimeFormatter formatter = patternDefine(ioChainCast);
-        LocalDateTime dt = (LocalDateTime) obj;
         if (checkType(obj.getClass())) {
+            DateTimeFormatter formatter = patternDefine(ioChainCast);
+            LocalDateTime dt = (LocalDateTime) obj;
             try {
                 String dateTimeStr = Optional.ofNullable(dt)
                         .map(dateTime -> dateTime.format(formatter))
